@@ -1,5 +1,7 @@
 name: Automatic docs update pipeline
 on:
+  issue_comment:
+    types: [created, edited]
   # Run when PR is labeled
   pull_request:
     types: [labeled]
@@ -19,7 +21,7 @@ concurrency:
 jobs:
   build-and-publish:
     name: Automatically update docs
-    if: ${{ github.event.label.name == 'refresh-docs' }}
+    if: ${{ (github.event.issue.pull_request && contains(github.event.comment.body, '/refresh-docs')) || github.event.label.name == 'refresh-docs' }}
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4

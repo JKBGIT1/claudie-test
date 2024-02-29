@@ -55,11 +55,11 @@ jobs:
       - name: Print latest version tag
         run : echo ${LATEST_VERSION}
 
-      # this is only possible, when there is already a version with latest alias
-      # in case there isn't a version like this you have to
-      #   1. mike deploy <version> latest
-      #   2. mike set-default latest
-      #   3. mike deploy <version_from_cmd_1> latest --push
-      # --push flag in the latest cmd is necessary, when you want to apply changes in gh-pages branch and also in GH Pages
-      - name: Deploy new docs version
-        run: mike deploy ${LATEST_VERSION} latest --update-aliases --push
+      # # this is only possible, when there is already a version with latest alias
+      # # in case there isn't a version like this you have to
+      # #   1. mike deploy <version> latest
+      # #   2. mike set-default latest
+      # #   3. mike deploy <version_from_cmd_1> latest --push
+      # # --push flag in the latest cmd is necessary, when you want to apply changes in gh-pages branch and also in GH Pages
+      # - name: Deploy new docs version
+      #   run: mike deploy ${LATEST_VERSION} latest --update-aliases --push
